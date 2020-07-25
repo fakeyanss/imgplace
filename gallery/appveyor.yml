@@ -2,7 +2,7 @@ clone_depth: 5
 
 environment:
   access_token:
-    secure: f1KvGZaowYTz1y8cJs8G+w29KWKnr60QNE0Bmla+mvak0vphwF1iGIOUHehJXC8R
+    secure: DAP/zdV4e2KWw6NSLEORAhVXT3u4dk3pKuT6z5CWlQoi1NWnNhLLXwBBt1nNSsnx
   matrix:
     - PYTHON: "C:\\Python36-x64"
 

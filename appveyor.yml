@@ -2,7 +2,7 @@ clone_depth: 5
 
 environment:
   access_token:
-    secure: f1KvGZaowYTz1y8cJs8G+w29KWKnr60QNE0Bmla+mvak0vphwF1iGIOUHehJXC8R
+    secure: DAP/zdV4e2KWw6NSLEORAhVXT3u4dk3pKuT6z5CWlQoi1NWnNhLLXwBBt1nNSsnx
   matrix:
     - PYTHON: "C:\\Python36-x64"
 
@@ -27,13 +27,7 @@ build_script:
 on_success:
   - echo %random% > .insure-to-commit
   - cd %TEMP%\static-site
-  - git config --global credential.helper store
-  - ps: Add-Content "$HOME\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-  - git config --global user.email "%GIT_USER_EMAIL%"
-  - git config --global user.name "%GIT_USER_NAME%"
-  - dir
   - git add -A
   - git commit -m "Update Static Site"
-  - git config -l
   - git push origin %TARGET_BRANCH%
   - appveyor AddMessage "Static Site Updated"

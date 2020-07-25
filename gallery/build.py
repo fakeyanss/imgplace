@@ -1,6 +1,7 @@
 # coding: utf-8
 # from PIL import Imageimport os
 import sys
+import os
 import json
 from PIL import Image
 from PIL.ExifTags import TAGS

@@ -27,7 +27,9 @@ build_script:
 on_success:
   - echo %random% > .insure-to-commit
   - cd %TEMP%\static-site
+  - dir
   - git add -A
   - git commit -m "Update Static Site"
+  - git config -l
   - git push origin %TARGET_BRANCH%
   - appveyor AddMessage "Static Site Updated"

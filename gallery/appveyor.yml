@@ -21,7 +21,7 @@ build_script:
   - git config --global user.email "%GIT_USER_EMAIL%"
   - git config --global user.name "%GIT_USER_NAME%"
   - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site
-  - cd %TEMP%\static-site\gallery
+  - cd %TEMP%\static-site
   - python build.py
 
 on_success:

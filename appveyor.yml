@@ -27,6 +27,10 @@ build_script:
 on_success:
   - echo %random% > .insure-to-commit
   - cd %TEMP%\static-site
+  - git config --global credential.helper store
+  - ps: Add-Content "$HOME\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git config --global user.email "%GIT_USER_EMAIL%"
+  - git config --global user.name "%GIT_USER_NAME%"
   - dir
   - git add -A
   - git commit -m "Update Static Site"

@@ -1,0 +1,8 @@
+__pycache__/
+.qiniu_pythonsdk_hostscache.json
+md_path.txt
+/.jpg
+/.png
+.DS_Store
+#album
+album.zip

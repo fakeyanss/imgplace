@@ -9,6 +9,10 @@ environment:
 skip_commits:
   message: /Update Static Site/
 
+only_commits:
+  files:
+    - gallery/
+
 install:
   - set PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
   - python --version

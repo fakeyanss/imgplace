@@ -38,7 +38,7 @@ jobs:
         git config --global user.name bot
         git add .
         git commit -m "auto build gallery" -a
-        continue-on-error: true
+      continue-on-error: true
     - name: Push changes  
       uses: ad-m/github-push-action@master
       with:

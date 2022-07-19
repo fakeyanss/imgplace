@@ -32,14 +32,15 @@ jobs:
       run: |
         cd gallery
         python build.py
-    - name: test
-      run: pwd
-    - name: publish
-      uses: crazy-max/ghaction-github-pages@v2.2.0
+    - name: commit
+      run: |
+        git config --global user.email bot
+        git config --global user.name bot
+        git add .
+        git commit -m "auto build gallery" -a
+        continue-on-error: true
+    - name: Push changes  
+      uses: ad-m/github-push-action@master
       with:
-        target_branch: master
-        keep_history: true
-        build_dir: ./
-        jekyll: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.G_PUSH }}
+        github_token: ${{ secrets.G_PUSH}}
+      continue-on-error: true

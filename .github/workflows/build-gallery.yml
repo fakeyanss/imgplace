@@ -1,0 +1,45 @@
+name: build gallery
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - gallery/**
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install Pillow opencv-python
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: run build.py
+      run: |
+        cd gallery
+        python build.py
+    - name: test
+      run: pwd
+    - name: publish
+      uses: crazy-max/ghaction-github-pages@v2.2.0
+      with:
+        target_branch: master
+        keep_history: true
+        build_dir: ./
+        jekyll: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.G_PUSH }}
